@@ -127,7 +127,7 @@ export const Form = () => {
           initial={{ opacity: 0 }}
           animate="animate"
   variants={variants} // Add the variants
-  whileTap={{ scale: 7 }}
+  whileTap={{ scale: 10 }}
           transition={{
             opacity: { duration: 3, ease: "easeOut",delay:1 },
           }}
@@ -147,7 +147,7 @@ export const Form = () => {
           initial={{ opacity: 0 }}
           animate="animate"
           variants={variants} // Add the variants
-          whileTap={{ scale: 7 }}
+          whileTap={{ scale: 10 }}
           transition={{
             opacity: { duration: 3, ease: "easeOut",delay:2 },
           }}
@@ -168,7 +168,7 @@ export const Form = () => {
   initial="initial"
   animate="animate"
   variants={variants} // Add the variants
-  whileTap={{ scale: 7 }}
+  whileTap={{ scale: 10 }}
   transition={{
     opacity: { duration: 3, ease: "easeOut", delay: 3 },
     rotate: { duration: 0.5 } // Add a transition for the rotate animation
