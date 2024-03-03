@@ -5,6 +5,10 @@ import { client } from '@/utils/db.js';
 const app = express();
 app.use(express.json());
 
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
+
 app.post('/store', async (req, res) => {
     try {
       await client.connect();
