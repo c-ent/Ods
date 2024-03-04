@@ -35,7 +35,7 @@ export const Landing = () => {
     <Banner  begin={handleClick} />
       </div>
 
-      <div className='flex items-center justify-center w-screen h-screen' ref={ref}  >
+      <div className=' w-screen h-screen' ref={ref}  >
         {showForm &&
           <motion.div className='h-full p-3 pb-20 md:p-10'>
             <Form />
