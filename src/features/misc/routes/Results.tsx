@@ -121,9 +121,10 @@ export const Results = () => {
       )}
       
       <p className='max-w-md text-xs italic m-0 pt-5'> "And, when you want something, all the universe conspires in helping you to achieve it"</p>
-        <Link to={`/`} className='mt-6 px-8 py-2 bg-gradient-to-r from-blue-300 to-blue-500 rounded-full text-white font-semibold hover:scale-105 transition-all duration-300 flex items-center justify-center'>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+        <Link to={`/`} className='mt-6 px-8 py-2 bg-gradient-to-r from-blue-500 to-blue-500 rounded-full text-white hover:scale-105 transition-all duration-300 flex items-center justify-center'>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
           </svg>
           Return Home
         </Link>
