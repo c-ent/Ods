@@ -1,7 +1,6 @@
 import {  useState } from 'react'
 import { motion } from 'framer-motion';
 import questionsorig from '../../../public/files/questions.json';
-import { useNavigate } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = 'https://hrnwpmdsdxqtyzgsvowv.supabase.co'
 const supabaseKey = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhybndwbWRzZHhxdHl6Z3N2b3d2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk1NDgxMDQsImV4cCI6MjAyNTEyNDEwNH0.qhuj1yTWWmT5l0IgdoIEluGhBhu8OMyg0NzPMTI8WV8`
@@ -44,7 +43,6 @@ interface Choice {
 const questions = shuffle(questionsorig) as Question[];
 
 export const Form = () => {
-  const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedChoices,setSelectedChoices] = useState<number[]>([]);
   const [selectedChoice, setSelectedChoice] = useState<null | number>(null);
@@ -95,7 +93,7 @@ export const Form = () => {
     }
 
     updateCategoryCount()
-    navigate(`/result/${maxCategory}`);
+    window.location.href = `/result/${maxCategory}`;
   }
 
   const variants = {

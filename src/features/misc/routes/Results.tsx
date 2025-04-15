@@ -40,7 +40,7 @@ export const Results = () => {
   const { category } = useParams<{ category: string }>();
   const [percentage, setPercentage] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-
+  
   useEffect(() => {
     const getResults = async () => {
       setLoading(true);
@@ -123,12 +123,12 @@ export const Results = () => {
       
       <p className='max-w-md text-xs italic m-0 pt-5'> "And, when you want something, all the universe conspires in helping you to achieve it"</p>
       <Link to={`/`} className='border-white/10 border mt-6 px-8 py-2 bg-gradient-to-r from-[#3771be4b] to-[#4d85ff50] rounded-full text-white hover:scale-105 transition-all duration-300 flex items-center justify-center'>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-          </svg>
-          Return Home
-        </Link>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+        Return Home
+      </Link>
     </div>
   );
 }
