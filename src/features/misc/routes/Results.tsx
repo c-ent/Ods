@@ -93,7 +93,7 @@ export const Results = () => {
   }
 
   return (
-    <div className='px-4 h-screen w-screen flex flex-col justify-center  items-center text-center space-y-2'>
+    <div className='px-4 h-screen w-screen flex flex-col justify-center items-center text-center space-y-2'>
       <div className="border-r h-[40px] md:h-[50px] border-white"></div>
       <h2>you're a</h2>
 
