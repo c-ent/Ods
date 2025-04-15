@@ -6,9 +6,10 @@ import { motion } from 'framer-motion';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js'; 
 
-const supabaseUrl = 'https://hrnwpmdsdxqtyzgsvowv.supabase.co'
-const supabaseKey = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhybndwbWRzZHhxdHl6Z3N2b3d2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk1NDgxMDQsImV4cCI6MjAyNTEyNDEwNH0.qhuj1yTWWmT5l0IgdoIEluGhBhu8OMyg0NzPMTI8WV8`
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
+
 
 type CategoryData = {
   [key: string]: {
