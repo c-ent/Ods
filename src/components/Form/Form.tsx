@@ -55,7 +55,7 @@ export const Form = () => {
     setTimeout(() => {
       setCurrentQuestionIndex(prevIndex => prevIndex + 1);
       setSelectedChoice(null);
-    }, 500);
+    }, 700);
   };
 
   
@@ -98,12 +98,6 @@ export const Form = () => {
     navigate(`/result/${maxCategory}`);
   }
 
-  const variants = {
-    initial: { opacity: 0, scale: 1 },
-    animate: { opacity: 1, scale: 1 },
-    tap: { scale: 20 },
-    out: { opacity: 0 }
-  };
 
   return (
     <motion.div className='p-6 md:p-8 shadow-sm shadow-white text-center flex flex-col  items-center bg-gradient-to-br from-[#fdfdfd00] to-[#ffffff05] rounded-2xl h-full backdrop-blur-[5px]'
@@ -112,16 +106,18 @@ export const Form = () => {
         y: { duration: 2, ease: "easeInOut",  }
       }}
     >
-      <div className='flex flex-col gap-6'>
+    <div className='flex flex-col gap-6'>
         <p>Question {currentQuestionIndex + 1} out of {questions.length}</p>
         {currentQuestion ? (
           <motion.h2
-            key={`motion-h2-${currentQuestion.question}`}
+            key={`question-${currentQuestionIndex}`}
             className='max-w-5xl underline decoration-1 underline-offset-8'
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, y: ["0%", "3%", "0%"] }}
+            initial={{ opacity: 0, y: "10%" }}
+            animate={{ opacity: 1, y: "0%" }}
+            exit={{ opacity: 0 }}
             transition={{
-              opacity: { duration: 1.5, ease: "easeOut" },
+              opacity: { duration: 1, ease: "easeOut" },
+              y: { duration: 1, ease: "easeOut" }
             }}
           >
             {currentQuestion.question}
@@ -135,19 +131,20 @@ export const Form = () => {
       <div className='flex-1 flex flex-col justify-center items-center gap-10 max-w-7xl'>
           <div className='flex flex-col md:flex-row justify-between gap-10 md:gap-20'>
               <motion.div 
-                key={`motion-div-1-${currentQuestion?.choices?.[0]?.choice ?? 'default'}`}
-                className=' max-w-xl flex  items-center cursor-pointer flex-1 gap-5 hover:-translate-y-3 transform transition duration-500'
-                initial={{ opacity: 0 }}
-                animate="animate"
-                variants={variants}
-                whileTap={{ scale: 10 }}
+                key={`choice-${currentQuestionIndex}-1`}
+                className='max-w-xl flex items-center cursor-pointer flex-1 gap-5'
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                whileTap={{ scale: 1.50 }}
                 transition={{
                   opacity: { duration: 0.8, ease: "easeOut", delay: 0.3 },
+                  scale: { duration: 1.5 }
                 }}
                 onClick={() => handleChoiceClick(currentQuestion.choices[0].id)}
                 style={{ visibility: selectedChoice === null || selectedChoice === currentQuestion.choices[0].id ? 'visible' : 'hidden' }}
               >
-                <p className='text-4xl '>
+                <p className='text-4xl'>
                   α
                 </p> 
                 <h3>
@@ -156,14 +153,15 @@ export const Form = () => {
               </motion.div>
 
               <motion.div 
-                  key={`motion-div-2-${currentQuestion?.choices?.[1]?.choice ?? 'default'}`}
-                  className=' max-w-xl flex  items-center cursor-pointer flex-1 gap-5 hover:-translate-y-3 transform transition duration-500'
-                  initial={{ opacity: 0 }}
-                  animate="animate"
-                  variants={variants}
-                  whileTap={{ scale: 10 }}
+                  key={`choice-${currentQuestionIndex}-2`}
+                  className='max-w-xl flex items-center cursor-pointer flex-1 gap-5'
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  whileTap={{ scale: 1.50 }}
                   transition={{
                     opacity: { duration: 0.8, ease: "easeOut", delay: 0.6 },
+                    scale: { duration: 1.5 }
                   }}
                   onClick={() => handleChoiceClick(currentQuestion.choices[1].id)}
                   style={{ visibility: selectedChoice === null || selectedChoice === currentQuestion.choices[1].id ? 'visible' : 'hidden' }}
@@ -179,15 +177,15 @@ export const Form = () => {
 
             <div>
               <motion.div 
-                key={`motion-div-3-${currentQuestion?.choices?.[2]?.choice ?? 'default'}`}
-                className='max-w-xl flex items-center cursor-pointer flex-1 gap-5 hover:-translate-y-3 transform transition duration-500'
-                initial="initial"
-                animate="animate"
-                variants={variants}
-                whileTap={{ scale: 10 }}
+                key={`choice-${currentQuestionIndex}-3`}
+                className='max-w-xl flex items-center cursor-pointer flex-1 gap-5'
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                whileTap={{ scale: 1.50 }}
                 transition={{
                   opacity: { duration: 0.8, ease: "easeOut", delay: 0.9 },
-                  rotate: { duration: 0.2 }
+                  scale: { duration: 1.5 }
                 }}
                 onClick={() => handleChoiceClick(currentQuestion.choices[2].id)}
                 style={{ visibility: selectedChoice === null || selectedChoice === currentQuestion.choices[2].id ? 'visible' : 'hidden' }}
@@ -199,7 +197,6 @@ export const Form = () => {
               <h3>
                 {currentQuestion?.choices?.[2]?.choice ?? 'No choices available'}
               </h3>
-
               </motion.div>
             </div>
       </div>
