@@ -2,6 +2,7 @@ import {  useState } from 'react'
 import { motion } from 'framer-motion';
 import questionsorig from '../../../public/files/questions.json';
 import { createClient } from '@supabase/supabase-js'
+import { useNavigate } from 'react-router-dom';
 const supabaseUrl = 'https://hrnwpmdsdxqtyzgsvowv.supabase.co'
 const supabaseKey = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhybndwbWRzZHhxdHl6Z3N2b3d2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk1NDgxMDQsImV4cCI6MjAyNTEyNDEwNH0.qhuj1yTWWmT5l0IgdoIEluGhBhu8OMyg0NzPMTI8WV8`
 const supabase = createClient(supabaseUrl, supabaseKey)
@@ -46,14 +47,14 @@ export const Form = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedChoices,setSelectedChoices] = useState<number[]>([]);
   const [selectedChoice, setSelectedChoice] = useState<null | number>(null);
-  
+  const navigate = useNavigate();
   const handleChoiceClick = (choiceId:number) => {
     setSelectedChoice(choiceId);
     setSelectedChoices(prevChoices => [...prevChoices, choiceId]);
     setTimeout(() => {
       setCurrentQuestionIndex(prevIndex => prevIndex + 1);
       setSelectedChoice(null);
-    }, 1000);
+    }, 500);
   };
 
   
@@ -93,7 +94,7 @@ export const Form = () => {
     }
 
     updateCategoryCount()
-    window.location.href = `/result/${maxCategory}`;
+    navigate(`/result/${maxCategory}`);
   }
 
   const variants = {
@@ -119,7 +120,7 @@ export const Form = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: ["0%", "3%", "0%"] }}
             transition={{
-              opacity: { duration: 5, ease: "easeOut" },
+              opacity: { duration: 1.5, ease: "easeOut" },
             }}
           >
             {currentQuestion.question}
@@ -140,7 +141,7 @@ export const Form = () => {
                 variants={variants}
                 whileTap={{ scale: 10 }}
                 transition={{
-                  opacity: { duration: 3, ease: "easeOut",delay:1 },
+                  opacity: { duration: 0.8, ease: "easeOut", delay: 0.3 },
                 }}
                 onClick={() => handleChoiceClick(currentQuestion.choices[0].id)}
                 style={{ visibility: selectedChoice === null || selectedChoice === currentQuestion.choices[0].id ? 'visible' : 'hidden' }}
@@ -154,18 +155,18 @@ export const Form = () => {
               </motion.div>
 
               <motion.div 
-                key={`motion-div-2-${currentQuestion?.choices?.[1]?.choice ?? 'default'}`}
-                className=' max-w-xl flex  items-center cursor-pointer flex-1 gap-5 hover:-translate-y-3 transform transition duration-500'
-                initial={{ opacity: 0 }}
-                animate="animate"
-                variants={variants}
-                whileTap={{ scale: 10 }}
-                transition={{
-                  opacity: { duration: 3, ease: "easeOut",delay:2 },
-                }}
-                onClick={() => handleChoiceClick(currentQuestion.choices[1].id)}
-                style={{ visibility: selectedChoice === null || selectedChoice === currentQuestion.choices[1].id ? 'visible' : 'hidden' }}
-              >
+                  key={`motion-div-2-${currentQuestion?.choices?.[1]?.choice ?? 'default'}`}
+                  className=' max-w-xl flex  items-center cursor-pointer flex-1 gap-5 hover:-translate-y-3 transform transition duration-500'
+                  initial={{ opacity: 0 }}
+                  animate="animate"
+                  variants={variants}
+                  whileTap={{ scale: 10 }}
+                  transition={{
+                    opacity: { duration: 0.8, ease: "easeOut", delay: 0.6 },
+                  }}
+                  onClick={() => handleChoiceClick(currentQuestion.choices[1].id)}
+                  style={{ visibility: selectedChoice === null || selectedChoice === currentQuestion.choices[1].id ? 'visible' : 'hidden' }}
+                >
                 <p className='text-4xl'>
                 β
                 </p>
@@ -184,12 +185,11 @@ export const Form = () => {
                 variants={variants}
                 whileTap={{ scale: 10 }}
                 transition={{
-                  opacity: { duration: 3, ease: "easeOut", delay: 3 },
-                  rotate: { duration: 0.5 }
+                  opacity: { duration: 0.8, ease: "easeOut", delay: 0.9 },
+                  rotate: { duration: 0.2 }
                 }}
                 onClick={() => handleChoiceClick(currentQuestion.choices[2].id)}
                 style={{ visibility: selectedChoice === null || selectedChoice === currentQuestion.choices[2].id ? 'visible' : 'hidden' }}
-                
               >
               <p className='text-4xl'>
                 γ

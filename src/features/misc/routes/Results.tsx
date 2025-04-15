@@ -3,7 +3,7 @@ import DreamChaserSvg from '../../../../public/svg/DreamChaserSvg.svg';
 import RiskTakerSvg from '../../../../public/svg/RiskTakerSvg.svg';
 import SteadySailerSvg from '../../../../public/svg/SteadySailerSvg.svg';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { createClient } from '@supabase/supabase-js'; 
 
 const supabaseUrl = 'https://hrnwpmdsdxqtyzgsvowv.supabase.co'
@@ -25,7 +25,7 @@ const categoryData: CategoryData = {
     file: DreamChaserSvg,
   },
   'soul': {
-    title: "Soul Searcher",
+    title: "Growth Seeker",
     description: `You value personal growth and self-discovery. You see change as an opportunity to learn about yourself and enjoy exploring different perspectives.`,
     file: RiskTakerSvg,
   },
@@ -39,12 +39,27 @@ const categoryData: CategoryData = {
 export const Results = () => {
   const { category } = useParams<{ category: string }>();
   const [percentage, setPercentage] = useState<number | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   
+  // Viewport height fix for ios devices 
+  useLayoutEffect(() => {
+    const updateHeight = () => {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    };
+    
+    updateHeight();
+    
+    window.addEventListener('resize', updateHeight);
+    window.addEventListener('orientationchange', updateHeight);
+    
+    return () => {
+      window.removeEventListener('resize', updateHeight);
+      window.removeEventListener('orientationchange', updateHeight);
+    };
+  }, []);
+
+    
   useEffect(() => {
     const getResults = async () => {
-      setLoading(true);
-
       try {
         const { data: categoriesData, error: categoriesError } = await supabase
           .from('results')
@@ -64,8 +79,6 @@ export const Results = () => {
       } catch (e) {
         console.error('Unexpected error:', e);
         setPercentage(null);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -84,18 +97,11 @@ export const Results = () => {
 
   const { title, description, file } = categoryInfo;
 
-  if (loading) {
-    return <div className='flex h-screen w-screen items-center justify-center animate-spin'>
-      <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* SVG path omitted for brevity */}
-      </svg>
-    </div>;
-  }
-
   return (
-    <div className='px-4 h-screen w-screen flex flex-col justify-center items-center text-center space-y-2'>
+    <div className='px-4 w-screen flex flex-col justify-center items-center text-center space-y-2'  style={{ height: 'calc(var(--vh, 1vh) * 100)' }}>
       <div className="border-r h-[40px] md:h-[50px] border-white"></div>
       <h2>you're a</h2>
+
 
       <motion.h1
         className="result-main-txt mb-6 font-bold text-gradient-result text-transparent bg-clip-text"
