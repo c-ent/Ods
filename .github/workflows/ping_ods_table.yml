@@ -2,7 +2,7 @@ name: Ping Ods API Daily
 
 on:
   schedule:
-    - cron: '* * * * *' # Runs every minute for testing purposes.
+    - cron: '39 8 * * *' # Runs every day at 8:39 AM UTC
 
 jobs:
   ping_supabase:
