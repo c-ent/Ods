@@ -3,7 +3,6 @@ name: Ping Ods API Daily
 on:
   schedule:
     - cron: '* * * * *' # Runs every minute for testing purposes.
-  workflow_dispatch: 
 
 jobs:
   ping_supabase:
