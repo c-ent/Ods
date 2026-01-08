@@ -1,4 +1,4 @@
-# Ods - Personality Quiz Application
+# Ods 
 
 **Ods** is an interactive personality quiz application that helps you discover your character through some questions.
 
