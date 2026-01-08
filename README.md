@@ -1,21 +1,16 @@
 # Ods - Personality Quiz Application
 
-**Ods** is an elegant, interactive personality quiz application that helps users discover their character archetype through thoughtful questions. Built with modern web technologies, it features beautiful animations, a starfield background, and smooth user interactions.
+**Ods** is an interactive personality quiz application that helps you discover your character through some questions.
 
 ## ✨ Features
 
-- **Interactive Personality Quiz**: 10 carefully crafted questions that reveal your character type
-- **Three Character Archetypes**: 
+- **Interactive Personality Quiz**: 10 questions that reveal your character type
+- **Three Character Types**: 
   - 🌟 **Dream Chaser** - Goal-oriented and aspirational
   - 🌱 **Growth Seeker** - Focused on personal development and self-discovery
   - 🚀 **Voyager** - Curious explorer who loves new experiences
-- **Beautiful UI/UX**: 
-  - Animated starfield background with floating comets
-  - Smooth transitions using Framer Motion
-  - Responsive design that works on all devices
-  - Greek letter choices (α, β, γ) for elegant selection
 - **Real-time Analytics**: See what percentage of users got your result
-- **Data Persistence**: Results are stored and tracked using Supabase
+- **Data Storage**: Results are stored and tracked using Supabase
 
 ## 🛠️ Tech Stack
 
@@ -98,7 +93,7 @@ src/
 └── svg/                # SVG assets
 ```
 
-## 🎨 Character Archetypes
+## 🎨 Character Types
 
 The quiz categorizes users into three distinct personality types:
 
@@ -137,5 +132,5 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🙏 Acknowledgments
 
 - Inspired by the philosophical quote: *"To realize one's destiny is a person's only obligation"*
-- Built with modern React ecosystem and best practices
-- Design inspired by minimalist aesthetics and smooth animations
+- Built with modern React and best practices
+  
