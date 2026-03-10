@@ -10,7 +10,7 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-# Build — secrets are mounted temporarily at this step only and never stored in any image layer
+# Build
 RUN --mount=type=secret,id=supabase_url \
     --mount=type=secret,id=supabase_anon_key \
     VITE_SUPABASE_URL=$(cat /run/secrets/supabase_url) \
@@ -18,8 +18,7 @@ RUN --mount=type=secret,id=supabase_url \
     npm run build
 
 # ---------- RUNTIME STAGE ----------
-# Use lightweight Nginx to serve the static React build
-FROM nginx:alpine
+FROM nginx:alpine-slim
 
 # Image metadata
 LABEL org.opencontainers.image.title="ODS"
